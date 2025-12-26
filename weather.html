@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: skyblue;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px;
+            width: 100%;
+            background: blue;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Weather App</h2>
+
+    <input type="text" id="city" placeholder="Enter city name">
+    <button onclick="getWeather()">Get Weather</button>
+
+    <p id="result"></p>
+</div>
+
+<script>
+function getWeather() {
+    var city = document.getElementById("city").value;
+    var result = document.getElementById("result");
+
+    var apiKey = "PASTE_YOUR_API_KEY_HERE";
+
+    if (city === "") {
+        result.innerHTML = "Enter city name";
+        return;
+    }
+
+    var url = "https://api.openweathermap.org/data/2.5/weather?q="
+              + city + "&units=metric&appid=" + apiKey;
+
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        if (data.cod == 200) {
+            result.innerHTML =
+                "City: " + data.name + "<br>" +
+                "Temperature: " + data.main.temp + " °C<br>" +
+                "Weather: " + data.weather[0].description;
+        } else {
+            result.innerHTML = "City not found";
+        }
+    });
+}
+</script>
+
+</body>
+</html>

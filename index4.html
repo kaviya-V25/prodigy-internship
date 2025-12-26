@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Boutique Landing Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="logo">Boutique</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Section -->
+  <section class="collection">
+    <h1>Our Exclusive Collection</h1>
+
+    <div class="cards">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Dress">
+        <h3>Elegant Dress</h3>
+        <p>$120.00</p>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f" alt="Bag">
+        <h3>Designer Bag</h3>
+        <p>$180.00</p>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1528701800489-20be3c0b3d43" alt="Shoes">
+        <h3>Stylish Shoes</h3>
+        <p>$95.00</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p>Email: boutique@example.com</p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.9);
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+nav.scrolled {
+  background-color: #f3c5cc;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #c05c6e;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  padding: 6px 10px;
+}
+
+.nav-links a:hover {
+  background-color: #c05c6e;
+  color: white;
+  border-radius: 4px;
+}
+
+/* Collection Section */
+.collection {
+  padding: 120px 40px 60px;
+  background: #f8e8eb;
+  text-align: center;
+}
+
+.collection h1 {
+  margin-bottom: 40px;
+  color: #7a2e3a;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  width: 260px;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin: 10px 0;
+}
+
+.card p {
+  color: #c05c6e;
+  font-weight: bold;
+}
+
+/* Contact */
+.contact {
+  padding: 50px;
+  text-align: center;
+  background: #f3c5cc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+  }
+}
+window.addEventListener("scroll", () => {
+  const nav = document.getElementById("navbar");
+  if (window.scrollY > 50) {
+    nav.classList.add("scrolled");
+  } else {
+    nav.classList.remove("scrolled");
+  }
+});
